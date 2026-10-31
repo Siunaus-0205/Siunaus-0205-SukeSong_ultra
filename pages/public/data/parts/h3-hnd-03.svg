@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 240" width="320" height="240" role="img" style="--ink:#f7cf94">
+<title>GRIP SLEEVE</title>
+<defs>
+<style>
+.l{fill:none;stroke:var(--ink);stroke-width:1.15;stroke-linecap:round;stroke-linejoin:round;opacity:.95}
+.f{fill:rgba(255,255,255,.055);stroke:var(--ink);stroke-width:1.15;stroke-linejoin:round}
+.f2{fill:rgba(255,255,255,.014);stroke:var(--ink);stroke-width:1.1;stroke-linejoin:round}
+.fi{fill:var(--ink);fill-opacity:.14;stroke:var(--ink);stroke-width:1.15;stroke-linejoin:round}
+.fs{fill:#05080c;stroke:var(--ink);stroke-width:1.15;stroke-linejoin:round}
+.t{fill:none;stroke:var(--ink);stroke-width:.95;opacity:.42}
+.d{fill:none;stroke:var(--ink);stroke-width:.95;opacity:.5;stroke-dasharray:4 4}
+.h{fill:none;stroke:var(--ink);stroke-width:.75;opacity:.4}
+.s{fill:var(--ink);opacity:.6}
+.k{font:6.4px ui-monospace,Consolas,monospace;fill:#9fb0c2;letter-spacing:.1em}
+.k2{font:5.8px ui-monospace,Consolas,monospace;fill:#7e8fa1;letter-spacing:.06em}
+.k3{font:7.4px ui-monospace,Consolas,monospace;fill:var(--ink);letter-spacing:.14em;opacity:.9}
+</style>
+<linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#0d141c"/><stop offset="1" stop-color="#070b10"/>
+</linearGradient>
+<pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse">
+<path d="M24 0H0V24" fill="none" stroke="rgba(255,255,255,.038)" stroke-width="1"/>
+</pattern>
+<filter id="soft" x="-40%" y="-200%" width="180%" height="500%">
+<feGaussianBlur stdDeviation="6"/>
+</filter>
+</defs>
+<rect width="320" height="240" fill="url(#bg)"/>
+<rect width="320" height="240" fill="url(#grid)"/>
+<circle cx="160" cy="116" r="104" fill="var(--ink)" opacity=".035"/>
+<circle cx="160" cy="116" r="62" fill="var(--ink)" opacity=".03"/>
+<line x1="10" y1="10" x2="19" y2="10" class="h"/><line x1="10" y1="10" x2="10" y2="19" class="h"/><line x1="310" y1="10" x2="301" y2="10" class="h"/><line x1="310" y1="10" x2="310" y2="19" class="h"/><line x1="10" y1="230" x2="19" y2="230" class="h"/><line x1="10" y1="230" x2="10" y2="221" class="h"/><line x1="310" y1="230" x2="301" y2="230" class="h"/><line x1="310" y1="230" x2="310" y2="221" class="h"/>
+<text x="16" y="24" class="k">H3-HND</text>
+<text x="304" y="24" class="k" text-anchor="end">PLATE 19 / 28</text>
+<ellipse cx="160" cy="199" rx="82" ry="8" fill="#000" opacity=".55" filter="url(#soft)"/>
+<path d="M112 62h96c8 0 14 6 14 14v70c0 14-10 22-18 30-8 8-12 18-12 30v14c0 10-8 18-18 18h-38c-10 0-18-8-18-18v-14c0-12-4-22-12-30-8-8-14-16-14-30V76c0-8 6-14 14-14z" class="f"/><path d="M120 74h80c4 0 6 2 6 6v64c0 10-6 16-12 22-8 8-16 20-16 34v12c0 4-2 6-6 6h-24c-4 0-6-2-6-6v-12c0-14-8-26-16-34-6-6-12-12-12-22V80c0-4 2-6 6-6z" class="t"/><circle cx="132" cy="108" r="2" class="t"/><circle cx="150" cy="108" r="2" class="t"/><circle cx="168" cy="108" r="2" class="t"/><circle cx="186" cy="108" r="2" class="t"/><circle cx="132" cy="120" r="2" class="t"/><circle cx="150" cy="120" r="2" class="t"/><circle cx="168" cy="120" r="2" class="t"/><circle cx="186" cy="120" r="2" class="t"/><circle cx="132" cy="132" r="2" class="t"/><circle cx="150" cy="132" r="2" class="t"/><circle cx="168" cy="132" r="2" class="t"/><circle cx="186" cy="132" r="2" class="t"/><circle cx="132" cy="144" r="2" class="t"/><circle cx="150" cy="144" r="2" class="t"/><circle cx="168" cy="144" r="2" class="t"/><circle cx="186" cy="144" r="2" class="t"/><circle cx="132" cy="156" r="2" class="t"/><circle cx="150" cy="156" r="2" class="t"/><circle cx="168" cy="156" r="2" class="t"/><circle cx="186" cy="156" r="2" class="t"/><line x1="160" y1="46" x2="160" y2="62" class="d"/><line x1="160" y1="214" x2="160" y2="230" class="d"/><text x="164" y="44" class="k3" text-anchor="start">A</text><text x="164" y="228" class="k3" text-anchor="start">A</text><line x1="226" y1="104" x2="258" y2="84" class="h"/><circle cx="226" cy="104" r="1.4" class="s"/><text x="261" y="86" class="k2" text-anchor="start">邵氏 55A</text><text x="232" y="128" class="k2" text-anchor="start">2.0 mm</text>
+<text x="16" y="226" class="k2">h3-hnd-03</text>
+<text x="304" y="226" class="k2" text-anchor="end">GRIP SLEEVE · 手柄与人机</text>
+</svg>

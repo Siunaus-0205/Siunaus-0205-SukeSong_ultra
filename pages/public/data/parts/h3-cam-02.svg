@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 240" width="320" height="240" role="img" style="--ink:#6ee7d0">
+<title>LENS &amp; IR FILTER</title>
+<defs>
+<style>
+.l{fill:none;stroke:var(--ink);stroke-width:1.15;stroke-linecap:round;stroke-linejoin:round;opacity:.95}
+.f{fill:rgba(255,255,255,.055);stroke:var(--ink);stroke-width:1.15;stroke-linejoin:round}
+.f2{fill:rgba(255,255,255,.014);stroke:var(--ink);stroke-width:1.1;stroke-linejoin:round}
+.fi{fill:var(--ink);fill-opacity:.14;stroke:var(--ink);stroke-width:1.15;stroke-linejoin:round}
+.fs{fill:#05080c;stroke:var(--ink);stroke-width:1.15;stroke-linejoin:round}
+.t{fill:none;stroke:var(--ink);stroke-width:.95;opacity:.42}
+.d{fill:none;stroke:var(--ink);stroke-width:.95;opacity:.5;stroke-dasharray:4 4}
+.h{fill:none;stroke:var(--ink);stroke-width:.75;opacity:.4}
+.s{fill:var(--ink);opacity:.6}
+.k{font:6.4px ui-monospace,Consolas,monospace;fill:#9fb0c2;letter-spacing:.1em}
+.k2{font:5.8px ui-monospace,Consolas,monospace;fill:#7e8fa1;letter-spacing:.06em}
+.k3{font:7.4px ui-monospace,Consolas,monospace;fill:var(--ink);letter-spacing:.14em;opacity:.9}
+</style>
+<linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#0d141c"/><stop offset="1" stop-color="#070b10"/>
+</linearGradient>
+<pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse">
+<path d="M24 0H0V24" fill="none" stroke="rgba(255,255,255,.038)" stroke-width="1"/>
+</pattern>
+<filter id="soft" x="-40%" y="-200%" width="180%" height="500%">
+<feGaussianBlur stdDeviation="6"/>
+</filter>
+</defs>
+<rect width="320" height="240" fill="url(#bg)"/>
+<rect width="320" height="240" fill="url(#grid)"/>
+<circle cx="160" cy="116" r="104" fill="var(--ink)" opacity=".035"/>
+<circle cx="160" cy="116" r="62" fill="var(--ink)" opacity=".03"/>
+<line x1="10" y1="10" x2="19" y2="10" class="h"/><line x1="10" y1="10" x2="10" y2="19" class="h"/><line x1="310" y1="10" x2="301" y2="10" class="h"/><line x1="310" y1="10" x2="310" y2="19" class="h"/><line x1="10" y1="230" x2="19" y2="230" class="h"/><line x1="10" y1="230" x2="10" y2="221" class="h"/><line x1="310" y1="230" x2="301" y2="230" class="h"/><line x1="310" y1="230" x2="310" y2="221" class="h"/>
+<text x="16" y="24" class="k">H3-CAM</text>
+<text x="304" y="24" class="k" text-anchor="end">PLATE 02 / 28</text>
+<ellipse cx="160" cy="199" rx="82" ry="8" fill="#000" opacity=".55" filter="url(#soft)"/>
+<line x1="34" y1="130" x2="292" y2="130" class="d"/><rect x="86" y="78" width="12" height="104" rx="2" class="f"/><rect x="198" y="88" width="11" height="84" rx="2" class="f"/><line x1="98" y1="78" x2="198" y2="88" class="l"/><line x1="98" y1="182" x2="198" y2="172" class="l"/><path d="M118 104Q135 130 118 156" class="l"/><path d="M118 104Q103 130 118 156" class="l"/><line x1="118" y1="104" x2="118" y2="156" class="t"/><path d="M150 98Q167 130 150 162" class="l"/><path d="M150 98Q135 130 150 162" class="l"/><line x1="150" y1="98" x2="150" y2="162" class="t"/><path d="M178 108Q195 130 178 152" class="l"/><path d="M178 108Q163 130 178 152" class="l"/><line x1="178" y1="108" x2="178" y2="152" class="t"/><rect x="212" y="96" width="8" height="68" rx="1" class="f2"/><clipPath id="ftr"><rect x="212" y="96" width="8" height="68"/></clipPath><g clip-path="url(#ftr)"><line x1="144" y1="164" x2="212" y2="96" class="h"/><line x1="149" y1="164" x2="217" y2="96" class="h"/><line x1="154" y1="164" x2="222" y2="96" class="h"/><line x1="159" y1="164" x2="227" y2="96" class="h"/><line x1="164" y1="164" x2="232" y2="96" class="h"/><line x1="169" y1="164" x2="237" y2="96" class="h"/><line x1="174" y1="164" x2="242" y2="96" class="h"/><line x1="179" y1="164" x2="247" y2="96" class="h"/><line x1="184" y1="164" x2="252" y2="96" class="h"/><line x1="189" y1="164" x2="257" y2="96" class="h"/><line x1="194" y1="164" x2="262" y2="96" class="h"/><line x1="199" y1="164" x2="267" y2="96" class="h"/><line x1="204" y1="164" x2="272" y2="96" class="h"/><line x1="209" y1="164" x2="277" y2="96" class="h"/><line x1="214" y1="164" x2="282" y2="96" class="h"/><line x1="219" y1="164" x2="287" y2="96" class="h"/><line x1="224" y1="164" x2="292" y2="96" class="h"/><line x1="229" y1="164" x2="297" y2="96" class="h"/></g><rect x="226" y="92" width="12" height="76" rx="2" class="f"/><path d="M40 96 120 130 40 164" class="t"/><path d="M120 130h72" class="t"/><line x1="120" y1="96" x2="62" y2="70" class="h"/><circle cx="120" cy="96" r="1.4" class="s"/><text x="65" y="72" class="k2" text-anchor="start">EFL 6.2 mm</text><line x1="86" y1="196" x2="86" y2="204" class="t"/><line x1="238" y1="196" x2="238" y2="204" class="t"/><line x1="86" y1="200" x2="238" y2="200" class="t"/><text x="162" y="194" class="k2" text-anchor="middle">Ø 28 mm</text>
+<text x="16" y="226" class="k2">h3-cam-02</text>
+<text x="304" y="226" class="k2" text-anchor="end">LENS &amp; IR FILTER · 相机与成像</text>
+</svg>

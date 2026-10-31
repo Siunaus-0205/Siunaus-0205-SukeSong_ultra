@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 240" width="320" height="240" role="img" style="--ink:#7dd3fc">
+<title>TILT MOTOR</title>
+<defs>
+<style>
+.l{fill:none;stroke:var(--ink);stroke-width:1.15;stroke-linecap:round;stroke-linejoin:round;opacity:.95}
+.f{fill:rgba(255,255,255,.055);stroke:var(--ink);stroke-width:1.15;stroke-linejoin:round}
+.f2{fill:rgba(255,255,255,.014);stroke:var(--ink);stroke-width:1.1;stroke-linejoin:round}
+.fi{fill:var(--ink);fill-opacity:.14;stroke:var(--ink);stroke-width:1.15;stroke-linejoin:round}
+.fs{fill:#05080c;stroke:var(--ink);stroke-width:1.15;stroke-linejoin:round}
+.t{fill:none;stroke:var(--ink);stroke-width:.95;opacity:.42}
+.d{fill:none;stroke:var(--ink);stroke-width:.95;opacity:.5;stroke-dasharray:4 4}
+.h{fill:none;stroke:var(--ink);stroke-width:.75;opacity:.4}
+.s{fill:var(--ink);opacity:.6}
+.k{font:6.4px ui-monospace,Consolas,monospace;fill:#9fb0c2;letter-spacing:.1em}
+.k2{font:5.8px ui-monospace,Consolas,monospace;fill:#7e8fa1;letter-spacing:.06em}
+.k3{font:7.4px ui-monospace,Consolas,monospace;fill:var(--ink);letter-spacing:.14em;opacity:.9}
+</style>
+<linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#0d141c"/><stop offset="1" stop-color="#070b10"/>
+</linearGradient>
+<pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse">
+<path d="M24 0H0V24" fill="none" stroke="rgba(255,255,255,.038)" stroke-width="1"/>
+</pattern>
+<filter id="soft" x="-40%" y="-200%" width="180%" height="500%">
+<feGaussianBlur stdDeviation="6"/>
+</filter>
+</defs>
+<rect width="320" height="240" fill="url(#bg)"/>
+<rect width="320" height="240" fill="url(#grid)"/>
+<circle cx="160" cy="116" r="104" fill="var(--ink)" opacity=".035"/>
+<circle cx="160" cy="116" r="62" fill="var(--ink)" opacity=".03"/>
+<line x1="10" y1="10" x2="19" y2="10" class="h"/><line x1="10" y1="10" x2="10" y2="19" class="h"/><line x1="310" y1="10" x2="301" y2="10" class="h"/><line x1="310" y1="10" x2="310" y2="19" class="h"/><line x1="10" y1="230" x2="19" y2="230" class="h"/><line x1="10" y1="230" x2="10" y2="221" class="h"/><line x1="310" y1="230" x2="301" y2="230" class="h"/><line x1="310" y1="230" x2="310" y2="221" class="h"/>
+<text x="16" y="24" class="k">H3-PIT</text>
+<text x="304" y="24" class="k" text-anchor="end">PLATE 05 / 28</text>
+<ellipse cx="160" cy="199" rx="82" ry="8" fill="#000" opacity=".55" filter="url(#soft)"/>
+<circle cx="148" cy="128" r="56" class="f"/><circle cx="148" cy="128" r="42" class="f2"/><circle cx="148" cy="86" r="11" class="f2"/><circle cx="175" cy="95.83" r="11" class="f2"/><circle cx="189.36" cy="120.71" r="11" class="f2"/><circle cx="184.37" cy="149" r="11" class="f2"/><circle cx="162.36" cy="167.47" r="11" class="f2"/><circle cx="133.64" cy="167.47" r="11" class="f2"/><circle cx="111.63" cy="149" r="11" class="f2"/><circle cx="106.64" cy="120.71" r="11" class="f2"/><circle cx="121" cy="95.83" r="11" class="f2"/><circle cx="148" cy="128" r="16" class="fs"/><path d="M148 66a62 62 0 0 1 0 124" class="l"/><path d="M148 74a54 54 0 0 0 0 108" class="t"/><rect x="204" y="121" width="46" height="14" rx="3" class="f"/><line x1="204" y1="114" x2="204" y2="142" class="l"/><line x1="248" y1="121" x2="268" y2="100" class="h"/><circle cx="248" cy="121" r="1.4" class="s"/><text x="271" y="102" class="k2" text-anchor="start">Ø6 h6</text><path d="M116 176c-8 10-4 18 4 20" class="l"/><path d="M126 180c-6 10-2 16 6 18" class="l"/><path d="M136 182c-4 10 0 14 8 16" class="l"/><text x="96" y="208" class="k2" text-anchor="start">U V W</text><circle cx="148" cy="78" r="2.2" class="s"/><circle cx="173" cy="84.7" r="2.2" class="s"/><circle cx="191.3" cy="103" r="2.2" class="s"/><circle cx="198" cy="128" r="2.2" class="s"/><circle cx="191.3" cy="153" r="2.2" class="s"/><circle cx="173" cy="171.3" r="2.2" class="s"/><circle cx="148" cy="178" r="2.2" class="s"/><circle cx="123" cy="171.3" r="2.2" class="s"/><circle cx="104.7" cy="153" r="2.2" class="s"/><circle cx="98" cy="128" r="2.2" class="s"/><circle cx="104.7" cy="103" r="2.2" class="s"/><circle cx="123" cy="84.7" r="2.2" class="s"/><line x1="86" y1="54" x2="86" y2="62" class="t"/><line x1="210" y1="54" x2="210" y2="62" class="t"/><line x1="86" y1="58" x2="210" y2="58" class="t"/><text x="148" y="52" class="k2" text-anchor="middle">Ø 44 mm</text>
+<text x="16" y="226" class="k2">h3-pit-01</text>
+<text x="304" y="226" class="k2" text-anchor="end">TILT MOTOR · 俯仰轴总成</text>
+</svg>

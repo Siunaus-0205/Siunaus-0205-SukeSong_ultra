@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 240" width="320" height="240" role="img" style="--ink:#c4b5fd">
+<title>SCREW SET</title>
+<defs>
+<style>
+.l{fill:none;stroke:var(--ink);stroke-width:1.15;stroke-linecap:round;stroke-linejoin:round;opacity:.95}
+.f{fill:rgba(255,255,255,.055);stroke:var(--ink);stroke-width:1.15;stroke-linejoin:round}
+.f2{fill:rgba(255,255,255,.014);stroke:var(--ink);stroke-width:1.1;stroke-linejoin:round}
+.fi{fill:var(--ink);fill-opacity:.14;stroke:var(--ink);stroke-width:1.15;stroke-linejoin:round}
+.fs{fill:#05080c;stroke:var(--ink);stroke-width:1.15;stroke-linejoin:round}
+.t{fill:none;stroke:var(--ink);stroke-width:.95;opacity:.42}
+.d{fill:none;stroke:var(--ink);stroke-width:.95;opacity:.5;stroke-dasharray:4 4}
+.h{fill:none;stroke:var(--ink);stroke-width:.75;opacity:.4}
+.s{fill:var(--ink);opacity:.6}
+.k{font:6.4px ui-monospace,Consolas,monospace;fill:#9fb0c2;letter-spacing:.1em}
+.k2{font:5.8px ui-monospace,Consolas,monospace;fill:#7e8fa1;letter-spacing:.06em}
+.k3{font:7.4px ui-monospace,Consolas,monospace;fill:var(--ink);letter-spacing:.14em;opacity:.9}
+</style>
+<linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#0d141c"/><stop offset="1" stop-color="#070b10"/>
+</linearGradient>
+<pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse">
+<path d="M24 0H0V24" fill="none" stroke="rgba(255,255,255,.038)" stroke-width="1"/>
+</pattern>
+<filter id="soft" x="-40%" y="-200%" width="180%" height="500%">
+<feGaussianBlur stdDeviation="6"/>
+</filter>
+</defs>
+<rect width="320" height="240" fill="url(#bg)"/>
+<rect width="320" height="240" fill="url(#grid)"/>
+<circle cx="160" cy="116" r="104" fill="var(--ink)" opacity=".035"/>
+<circle cx="160" cy="116" r="62" fill="var(--ink)" opacity=".03"/>
+<line x1="10" y1="10" x2="19" y2="10" class="h"/><line x1="10" y1="10" x2="10" y2="19" class="h"/><line x1="310" y1="10" x2="301" y2="10" class="h"/><line x1="310" y1="10" x2="310" y2="19" class="h"/><line x1="10" y1="230" x2="19" y2="230" class="h"/><line x1="10" y1="230" x2="10" y2="221" class="h"/><line x1="310" y1="230" x2="301" y2="230" class="h"/><line x1="310" y1="230" x2="310" y2="221" class="h"/>
+<text x="16" y="24" class="k">H3-YAW</text>
+<text x="304" y="24" class="k" text-anchor="end">PLATE 16 / 28</text>
+<ellipse cx="160" cy="199" rx="82" ry="8" fill="#000" opacity=".55" filter="url(#soft)"/>
+<rect x="50" y="80" width="20" height="24" rx="3" class="f"/><circle cx="60" cy="92" r="6.5" class="fs"/><polygon points="56,88.6 60,85 64,88.6 60,95.4 60,99" class="s"/><rect x="70" y="86.5" width="62" height="11" rx="1" class="f2"/><line x1="73" y1="97.5" x2="76" y2="86.5" class="h"/><line x1="78" y1="97.5" x2="81" y2="86.5" class="h"/><line x1="83" y1="97.5" x2="86" y2="86.5" class="h"/><line x1="88" y1="97.5" x2="91" y2="86.5" class="h"/><line x1="93" y1="97.5" x2="96" y2="86.5" class="h"/><line x1="98" y1="97.5" x2="101" y2="86.5" class="h"/><line x1="103" y1="97.5" x2="106" y2="86.5" class="h"/><line x1="108" y1="97.5" x2="111" y2="86.5" class="h"/><line x1="113" y1="97.5" x2="116" y2="86.5" class="h"/><line x1="118" y1="97.5" x2="121" y2="86.5" class="h"/><line x1="123" y1="97.5" x2="126" y2="86.5" class="h"/><line x1="128" y1="97.5" x2="131" y2="86.5" class="h"/><polygon points="132,86.5 138,92 132,97.5" class="f2"/><rect x="50" y="126" width="20" height="24" rx="3" class="f"/><circle cx="60" cy="138" r="6.5" class="fs"/><polygon points="56,134.6 60,131 64,134.6 60,141.4 60,145" class="s"/><rect x="70" y="132.5" width="96" height="11" rx="1" class="f2"/><line x1="73" y1="143.5" x2="76" y2="132.5" class="h"/><line x1="78" y1="143.5" x2="81" y2="132.5" class="h"/><line x1="83" y1="143.5" x2="86" y2="132.5" class="h"/><line x1="88" y1="143.5" x2="91" y2="132.5" class="h"/><line x1="93" y1="143.5" x2="96" y2="132.5" class="h"/><line x1="98" y1="143.5" x2="101" y2="132.5" class="h"/><line x1="103" y1="143.5" x2="106" y2="132.5" class="h"/><line x1="108" y1="143.5" x2="111" y2="132.5" class="h"/><line x1="113" y1="143.5" x2="116" y2="132.5" class="h"/><line x1="118" y1="143.5" x2="121" y2="132.5" class="h"/><line x1="123" y1="143.5" x2="126" y2="132.5" class="h"/><line x1="128" y1="143.5" x2="131" y2="132.5" class="h"/><line x1="133" y1="143.5" x2="136" y2="132.5" class="h"/><line x1="138" y1="143.5" x2="141" y2="132.5" class="h"/><line x1="143" y1="143.5" x2="146" y2="132.5" class="h"/><line x1="148" y1="143.5" x2="151" y2="132.5" class="h"/><line x1="153" y1="143.5" x2="156" y2="132.5" class="h"/><line x1="158" y1="143.5" x2="161" y2="132.5" class="h"/><line x1="163" y1="143.5" x2="166" y2="132.5" class="h"/><polygon points="166,132.5 172,138 166,143.5" class="f2"/><rect x="50" y="170" width="20" height="24" rx="3" class="f"/><circle cx="60" cy="182" r="6.5" class="fs"/><polygon points="56,178.6 60,175 64,178.6 60,185.4 60,189" class="s"/><rect x="70" y="176.5" width="40" height="11" rx="1" class="f2"/><line x1="73" y1="187.5" x2="76" y2="176.5" class="h"/><line x1="78" y1="187.5" x2="81" y2="176.5" class="h"/><line x1="83" y1="187.5" x2="86" y2="176.5" class="h"/><line x1="88" y1="187.5" x2="91" y2="176.5" class="h"/><line x1="93" y1="187.5" x2="96" y2="176.5" class="h"/><line x1="98" y1="187.5" x2="101" y2="176.5" class="h"/><line x1="103" y1="187.5" x2="106" y2="176.5" class="h"/><line x1="108" y1="187.5" x2="111" y2="176.5" class="h"/><polygon points="110,176.5 116,182 110,187.5" class="f2"/><ellipse cx="274" cy="92" rx="14" ry="6" class="f2"/><circle cx="274" cy="92" r="6.5" class="fs"/><polygon points="262,156 286,156 292,168 286,180 262,180 256,168" class="f2"/><circle cx="274" cy="168" r="7" class="fs"/><line x1="272" y1="78" x2="214" y2="62" class="h"/><circle cx="272" cy="78" r="1.4" class="s"/><text x="211" y="64" class="k2" text-anchor="end">M2.5 螺母</text><text x="50" y="214" class="k2" text-anchor="start">DIN 912 · A2-70 · 内六角</text><text x="50" y="222" class="k2" text-anchor="start">M2.5×6 / M2.5×10 / M3×8</text><line x1="60" y1="92" x2="34" y2="64" class="h"/><circle cx="60" cy="92" r="1.4" class="s"/><text x="37" y="66" class="k2" text-anchor="start">内六角</text>
+<text x="16" y="226" class="k2">h3-yaw-04</text>
+<text x="304" y="226" class="k2" text-anchor="end">SCREW SET · 航向轴总成</text>
+</svg>

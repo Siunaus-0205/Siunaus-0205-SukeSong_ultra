@@ -1,0 +1,17 @@
+# 敏感文件不进版本库
+ai-config.env
+pages/.env
+backend/market-config.env
+
+# 运行数据（只保留占位说明）
+pages/data/*
+!pages/data/README.txt
+backend/data/
+
+# 本地注释版示例（build-package 明确不随包分发）
+pages/public/data/h3-parts.v1.example.jsonc
+
+# 杂项
+*.log
+Thumbs.db
+desktop.ini

@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 240" width="320" height="240" role="img" style="--ink:#6ee7d0">
+<title>IMAGE SENSOR PCB</title>
+<defs>
+<style>
+.l{fill:none;stroke:var(--ink);stroke-width:1.15;stroke-linecap:round;stroke-linejoin:round;opacity:.95}
+.f{fill:rgba(255,255,255,.055);stroke:var(--ink);stroke-width:1.15;stroke-linejoin:round}
+.f2{fill:rgba(255,255,255,.014);stroke:var(--ink);stroke-width:1.1;stroke-linejoin:round}
+.fi{fill:var(--ink);fill-opacity:.14;stroke:var(--ink);stroke-width:1.15;stroke-linejoin:round}
+.fs{fill:#05080c;stroke:var(--ink);stroke-width:1.15;stroke-linejoin:round}
+.t{fill:none;stroke:var(--ink);stroke-width:.95;opacity:.42}
+.d{fill:none;stroke:var(--ink);stroke-width:.95;opacity:.5;stroke-dasharray:4 4}
+.h{fill:none;stroke:var(--ink);stroke-width:.75;opacity:.4}
+.s{fill:var(--ink);opacity:.6}
+.k{font:6.4px ui-monospace,Consolas,monospace;fill:#9fb0c2;letter-spacing:.1em}
+.k2{font:5.8px ui-monospace,Consolas,monospace;fill:#7e8fa1;letter-spacing:.06em}
+.k3{font:7.4px ui-monospace,Consolas,monospace;fill:var(--ink);letter-spacing:.14em;opacity:.9}
+</style>
+<linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#0d141c"/><stop offset="1" stop-color="#070b10"/>
+</linearGradient>
+<pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse">
+<path d="M24 0H0V24" fill="none" stroke="rgba(255,255,255,.038)" stroke-width="1"/>
+</pattern>
+<filter id="soft" x="-40%" y="-200%" width="180%" height="500%">
+<feGaussianBlur stdDeviation="6"/>
+</filter>
+</defs>
+<rect width="320" height="240" fill="url(#bg)"/>
+<rect width="320" height="240" fill="url(#grid)"/>
+<circle cx="160" cy="116" r="104" fill="var(--ink)" opacity=".035"/>
+<circle cx="160" cy="116" r="62" fill="var(--ink)" opacity=".03"/>
+<line x1="10" y1="10" x2="19" y2="10" class="h"/><line x1="10" y1="10" x2="10" y2="19" class="h"/><line x1="310" y1="10" x2="301" y2="10" class="h"/><line x1="310" y1="10" x2="310" y2="19" class="h"/><line x1="10" y1="230" x2="19" y2="230" class="h"/><line x1="10" y1="230" x2="10" y2="221" class="h"/><line x1="310" y1="230" x2="301" y2="230" class="h"/><line x1="310" y1="230" x2="310" y2="221" class="h"/>
+<text x="16" y="24" class="k">H3-CAM</text>
+<text x="304" y="24" class="k" text-anchor="end">PLATE 03 / 28</text>
+<ellipse cx="160" cy="199" rx="82" ry="8" fill="#000" opacity=".55" filter="url(#soft)"/>
+<rect x="56" y="86" width="192" height="92" rx="5" class="f2"/><path d="M64 150h56v-8" class="t"/><path d="M64 156h56v-17" class="t"/><path d="M64 162h56v-26" class="t"/><path d="M248 100h-46v22" class="t"/><path d="M248 160h-52v-12" class="t"/><rect x="118" y="100" width="76" height="62" rx="3" class="f"/><rect x="130" y="110" width="52" height="42" rx="2" class="fi"/><rect x="138" y="118" width="36" height="26" rx="1" class="fs"/><circle cx="156" cy="131" r="9" class="l"/><rect x="120" y="94" width="4" height="3" rx="1" class="s"/><rect x="127" y="94" width="4" height="3" rx="1" class="s"/><rect x="134" y="94" width="4" height="3" rx="1" class="s"/><rect x="141" y="94" width="4" height="3" rx="1" class="s"/><rect x="148" y="94" width="4" height="3" rx="1" class="s"/><rect x="155" y="94" width="4" height="3" rx="1" class="s"/><rect x="162" y="94" width="4" height="3" rx="1" class="s"/><rect x="169" y="94" width="4" height="3" rx="1" class="s"/><rect x="176" y="94" width="4" height="3" rx="1" class="s"/><rect x="183" y="94" width="4" height="3" rx="1" class="s"/><rect x="120" y="164" width="4" height="3" rx="1" class="s"/><rect x="127" y="164" width="4" height="3" rx="1" class="s"/><rect x="134" y="164" width="4" height="3" rx="1" class="s"/><rect x="141" y="164" width="4" height="3" rx="1" class="s"/><rect x="148" y="164" width="4" height="3" rx="1" class="s"/><rect x="155" y="164" width="4" height="3" rx="1" class="s"/><rect x="162" y="164" width="4" height="3" rx="1" class="s"/><rect x="169" y="164" width="4" height="3" rx="1" class="s"/><rect x="176" y="164" width="4" height="3" rx="1" class="s"/><rect x="183" y="164" width="4" height="3" rx="1" class="s"/><rect x="210" y="112" width="20" height="34" rx="2" class="f"/><rect x="214" y="118" width="12" height="5" rx="1" class="s"/><rect x="222" y="118" width="12" height="5" rx="1" class="s"/><circle cx="68" cy="98" r="3.4" class="fs"/><circle cx="68" cy="166" r="3.4" class="fs"/><circle cx="236" cy="98" r="3.4" class="fs"/><circle cx="236" cy="166" r="3.4" class="fs"/><line x1="156" y1="131" x2="100" y2="74" class="h"/><circle cx="156" cy="131" r="1.4" class="s"/><text x="97" y="76" class="k2" text-anchor="end">CMOS 1/2.3″</text><line x1="222" y1="150" x2="268" y2="178" class="h"/><circle cx="222" cy="150" r="1.4" class="s"/><text x="271" y="180" class="k2" text-anchor="start">MIPI 4-lane</text><line x1="56" y1="74" x2="56" y2="82" class="t"/><line x1="248" y1="74" x2="248" y2="82" class="t"/><line x1="56" y1="78" x2="248" y2="78" class="t"/><text x="152" y="72" class="k2" text-anchor="middle">42 mm</text>
+<text x="16" y="226" class="k2">h3-cam-03</text>
+<text x="304" y="226" class="k2" text-anchor="end">IMAGE SENSOR PCB · 相机与成像</text>
+</svg>

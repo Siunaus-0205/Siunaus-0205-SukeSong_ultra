@@ -1,0 +1,42 @@
+# 1688 登录 Cookie（示例文件，不要提交真实内容）
+#
+# 用途：匿名抓 1688 详情页会被滑块风控限制（大约抓 1 条就要冷却 15~20 分钟）。
+#       带上登录 Cookie 后配额宽松很多，后端不会频繁被挡。
+#
+# ★ 推荐做法：不用手抄，跑脚本
+#   cd atlas\backend
+#   node scripts\1688-login.mjs        ← 弹窗，用 1688 / 淘宝 App 扫码
+#   登录成功后脚本自动把整串 Cookie 写进 data\1688-cookie.txt（就是本文件的目标位置），
+#   并且顺手把 cna / _m_h5_tk 补齐。只打印 Cookie 名字和长度，不打印值。
+#
+#   以后 Cookie 快过期时：node scripts\1688-login.mjs --grab-only
+#   （专用配置 data\1688-profile 里还留着登录态，通常不用再扫码）
+#
+# 备选手动方式（Chrome / Edge，仅当脚本跑不起来时）：
+#   1. 打开 https://detail.1688.com/ ，确认右上角已登录；
+#   2. F12 → Network（网络）→ 勾 Preserve log → 刷新页面；
+#   3. 点左侧第一条 document 请求（形如 829075435918.html）；
+#   4. 右侧 Headers → Request Headers → Cookie: 这一行，右键 Copy value；
+#   5. 得到一整串 “k=v; k=v; ...”（不含 "Cookie:" 字样）。
+#
+# 放到哪里（二选一）：
+#   A. market-config.env 的 MARKET_1688_COOKIE= 后面（一行，不要换行）；
+#   B. 整串存到 backend/data/1688-cookie.txt（MARKET_1688_COOKIE 留空时自动读它）。
+#
+# 判断是否有效：
+#   cd atlas\backend
+#   node scripts\check-1688.mjs
+#   ✅ 可以抓取 = 有效；⚠️ 跳到登录页 = 过期，重跑 1688-login.mjs；❌ 滑块 = 等冷却。
+#
+# ⚠️ 不要试图去扒日常 Edge / Chrome 的 Cookie：
+#   浏览器运行时独占锁住 Cookie 库；Cookie 是 v20 App-Bound 加密，密钥绑定用户数据目录路径，
+#   复制 / junction 都解不开，而解不开时浏览器会把这些 Cookie 当损坏直接删掉（会掉登录态）。
+#
+# 这串等于登录凭证，泄露等于把账号给别人用：不要发聊天、不要提交仓库、不要打进压缩包。
+#
+# 关键字段（整串复制即可，这里只是方便核对有没有漏）：
+#   cookie2=...       登录票据核心
+#   _tb_token_=...    CSRF token
+#   cna=...           设备 ID（风控用，脚本会自动补）
+#   _m_h5_tk=...      h5 接口 token（脚本会自动补）
+#   __cn_logon__     登录标记（营销页可能把它改成 false，以 cookie2 为准）

@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="dark" />
+    <title>ATLAS · 方案配置与对比</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230b0f14'/%3E%3Cpath d='M8 22 16 8l8 14' stroke='%236ee7d0' stroke-width='2.4' fill='none' stroke-linecap='round'/%3E%3C/svg%3E" />
+    <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="./next.css" />
+  </head>
+  <body class="s2-body">
+    <div class="ambient" aria-hidden="true"></div>
+
+    <div class="s2-shell">
+      <header class="s2-topbar">
+        <div class="brand">
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="20" height="20"><path d="M5 18 12 5l7 13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M8.5 13.5h7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </span>
+          <span class="brand-name">ATLAS</span>
+          <span class="brand-sub">STAGE 2 · CONFIGURATOR</span>
+        </div>
+
+        <div class="s2-project">
+          <span class="s2-project-kicker">当前需求</span>
+          <strong id="projectName">读取中…</strong>
+          <span class="s2-project-meta" id="projectMeta"></span>
+        </div>
+
+        <div class="s2-top-actions">
+          <button class="ghost-button" id="payloadBtn" type="button">需求 JSON</button>
+          <a class="ghost-button" href="./index.html">返回第一页</a>
+        </div>
+      </header>
+
+      <nav class="s2-tabs" role="tablist" aria-label="第二页视图">
+        <button class="s2-tab active" data-tab="compare" role="tab" aria-selected="true"><span>01</span>方案对比</button>
+        <button class="s2-tab" data-tab="delivery" role="tab" aria-selected="false"><span>02</span>交付排期</button>
+        <span class="s2-tab-note"><i class="s2-dot"></i>本地工作副本 · 未提交</span>
+      </nav>
+
+      <main class="s2-main">
+        <section class="s2-view" id="view-compare" role="tabpanel">
+          <div class="s2-layout">
+            <aside class="s2-panel s2-configurator" aria-label="用户自配器">
+              <div class="s2-panel-head">
+                <span class="kicker">USER CONFIGURATOR</span>
+                <h2>用户自配器</h2>
+                <p>点零件类型展开 10 个型号；选中型号加入当前用户方案。</p>
+              </div>
+
+              <div class="s2-create">
+                <button class="primary-button" id="fromSystemBtn" type="button">从系统推荐开始自配</button>
+                <button class="secondary-button" id="fromZeroBtn" type="button">从零开始自配</button>
+              </div>
+
+              <div class="s2-active" id="activeBar" hidden></div>
+              <div class="s2-tree" id="partTree"></div>
+
+              <div class="s2-panel-foot">
+                <span id="treeSummary">28 个零件类型</span>
+                <button class="s2-text-button" id="resetBtn" type="button">重置自配</button>
+              </div>
+            </aside>
+
+            <section class="s2-center" aria-label="方案对比">
+              <div class="s2-center-head">
+                <div>
+                  <span class="kicker">BUILD · COMPARE · DECIDE</span>
+                  <h1 class="s2-constraint-title" id="heroConstraints">正在读取硬约束…</h1>
+                  <p>系统推荐用极速引擎（多起点爬山）按当前评分权重在 280 个型号里搜索；用户自配从它复制或从零开始，填满后才能对比。</p>
+                </div>
+                <div class="s2-compare-box">
+                  <button class="primary-button" id="compareBtn" type="button" disabled>开始对比</button>
+                  <span class="s2-hint" id="compareHint">先创建一个用户自配方案</span>
+                </div>
+              </div>
+
+              <div class="s2-matrix-wrap">
+                <div class="s2-matrix-scroll" id="matrixScroll">
+                  <table class="s2-matrix" id="matrix"></table>
+                </div>
+              </div>
+
+              <div class="s2-compare-summary" id="compareSummary" hidden></div>
+
+              <section class="s2-score" id="scorePanel" aria-label="方案评分" hidden></section>
+
+              <div class="s2-legend">
+                <span><i class="s2-warn-dot">!</i>不满足硬条件</span>
+                <span><i class="s2-lock-dot">·</i>系统推荐不可调</span>
+                <span>悬停格子看核心参数</span>
+                <span>横向滚动查看更多方案</span>
+              </div>
+            </section>
+
+            <aside class="s2-panel s2-inspector" id="inspector" aria-label="零件详情"></aside>
+          </div>
+        </section>
+
+        <section class="s2-view" id="view-delivery" role="tabpanel" hidden>
+          <div class="dlv">
+            <header class="dlv-head">
+              <div class="dlv-head-main">
+                <span class="kicker">02 · DELIVERY PLAN</span>
+                <h2>交付排期 · 周期风险与人员协作</h2>
+                <p id="dlvLead">按当前最佳方案里 28 个零件的交期倒排。</p>
+              </div>
+              <div class="dlv-metrics" id="dlvMetrics"></div>
+            </header>
+
+            <div class="dlv-toolbar">
+              <label class="dlv-field">
+                <span>起始日期</span>
+                <input type="date" id="dlvStart" />
+              </label>
+              <label class="dlv-field">
+                <span>终止日期</span>
+                <input type="date" id="dlvEnd" />
+              </label>
+              <span class="dlv-days" id="dlvDays">—</span>
+              <label class="dlv-field">
+                <span>排期基准</span>
+                <select id="dlvBasis"></select>
+              </label>
+              <button class="secondary-button" id="dlvAuto" type="button">按交期自动排</button>
+            </div>
+
+            <p class="dlv-note" id="dlvNote" hidden></p>
+
+            <section class="dlv-gantt" id="dlvGantt" aria-label="交付排期甘特图">
+              <div class="dlv-gantt-months">
+                <div class="dlv-labels-spacer"></div>
+                <div class="dlv-month-strip" id="dlvMonths"></div>
+              </div>
+              <div class="dlv-gantt-head">
+                <div class="dlv-labels-spacer"><span>任务 / 责任人</span></div>
+                <div class="dlv-axis" id="dlvAxis"></div>
+              </div>
+              <div class="dlv-gantt-alerts">
+                <div class="dlv-labels-spacer"><span>预警线</span></div>
+                <div class="dlv-alert-plot" id="dlvAlertPlot"></div>
+              </div>
+              <div class="dlv-gantt-body">
+                <div class="dlv-labelcol" id="dlvLabels"></div>
+                <div class="dlv-plot-wrap">
+                  <div class="dlv-grid" id="dlvGrid"></div>
+                  <div class="dlv-plot" id="dlvPlot"></div>
+                </div>
+              </div>
+            </section>
+
+            <div class="dlv-legend" id="dlvLegend"></div>
+
+            <div class="dlv-cards" id="dlvCards"></div>
+
+            <section class="dlv-flow">
+              <div class="dlv-flow-head">
+                <strong>配套流程图 · 与甘特图同源</strong>
+                <span>点节点定位甘特条，点条形定位节点；虚线是 AI 的建议 / 预测关系</span>
+              </div>
+              <div class="dlv-flow-wrap">
+                <div class="dlv-flow-canvas" id="dlvFlow"><svg id="dlvFlowSvg"></svg></div>
+              </div>
+            </section>
+          </div>
+        </section>
+
+        <section class="s2-boot-error" id="bootError" hidden>
+          <span class="kicker">HANDOFF ERROR</span>
+          <h2 id="bootErrorTitle">没有拿到需求</h2>
+          <p id="bootErrorMessage"></p>
+          <div class="s2-boot-actions">
+            <button class="secondary-button" id="bootRetryBtn" type="button">重试</button>
+            <a class="primary-button" href="./index.html">回到第一页</a>
+          </div>
+        </section>
+      </main>
+
+      <footer class="s2-footnote">
+        <span>第二页 · 方案对比与交付排期</span>
+        <span class="foot-sep" aria-hidden="true">·</span>
+        <span>系统推荐 = 极速引擎（多起点爬山，随权重重算）；交付排期按最佳方案的交期倒排，用户方案只在本页内存/会话中保留</span>
+        <span class="foot-sep" aria-hidden="true">·</span>
+        <a class="foot-link" href="./table1.html" target="_blank" rel="noopener">表1</a>
+      </footer>
+    </div>
+
+    <div class="s2-tooltip" id="tooltip" role="tooltip" hidden></div>
+
+    <div class="s2-modal" id="payloadModal" hidden>
+      <div class="s2-modal-backdrop" data-close="1"></div>
+      <div class="s2-modal-card" role="dialog" aria-modal="true" aria-labelledby="payloadTitle">
+        <header class="s2-modal-head">
+          <div>
+            <span class="kicker">REQUIREMENT PAYLOAD</span>
+            <h2 id="payloadTitle">第一页交来的需求 JSON</h2>
+          </div>
+          <button class="s2-modal-close" type="button" data-close="1" aria-label="关闭">×</button>
+        </header>
+        <pre class="s2-payload-code" id="payloadJson"></pre>
+        <div class="s2-modal-actions">
+          <button class="secondary-button" id="copyPayloadBtn" type="button">复制 JSON</button>
+          <button class="primary-button" type="button" data-close="1">关闭</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+    <script src="./next.js" defer></script>
+  </body>
+</html>

@@ -1,0 +1,288 @@
+{
+  "schemaVersion": "atlas.part-art/v1",
+  "note": "每个零件类型一张示意图（同类 10 个型号共用）。文件名 = 零件类型代码。",
+  "count": 28,
+  "generatedBy": "atlas/scripts/gen-part-art.mjs",
+  "items": [
+    {
+      "code": "h3-cam-01",
+      "plate": 1,
+      "title": "CAMERA MODULE",
+      "name": "相机模组",
+      "module": "h3-cam",
+      "moduleName": "相机与成像",
+      "file": "h3-cam-01.svg",
+      "note": "光学、传感器与 ISP 的集成体，可整体采购与校准。"
+    },
+    {
+      "code": "h3-cam-02",
+      "plate": 2,
+      "title": "LENS & IR FILTER",
+      "name": "镜头与滤光片",
+      "module": "h3-cam",
+      "moduleName": "相机与成像",
+      "file": "h3-cam-02.svg",
+      "note": "镜片组与 IR 滤光片，决定视场角与进光量。"
+    },
+    {
+      "code": "h3-cam-03",
+      "plate": 3,
+      "title": "IMAGE SENSOR PCB",
+      "name": "图像传感器板",
+      "module": "h3-cam",
+      "moduleName": "相机与成像",
+      "file": "h3-cam-03.svg",
+      "note": "承载 CMOS 与 ISP 的电路板，含图像输出接口。"
+    },
+    {
+      "code": "h3-cam-04",
+      "plate": 4,
+      "title": "HEAT SPREADER",
+      "name": "散热支架",
+      "module": "h3-cam",
+      "moduleName": "相机与成像",
+      "file": "h3-cam-04.svg",
+      "note": "相机模组的结构支撑兼导热件，抑制长时间录制温升。"
+    },
+    {
+      "code": "h3-pit-01",
+      "plate": 5,
+      "title": "TILT MOTOR",
+      "name": "俯仰无刷电机",
+      "module": "h3-pit",
+      "moduleName": "俯仰轴总成",
+      "file": "h3-pit-01.svg",
+      "note": "驱动俯仰轴的无刷电机，含霍尔/编码反馈。"
+    },
+    {
+      "code": "h3-pit-02",
+      "plate": 6,
+      "title": "TILT ARM",
+      "name": "俯仰轴臂",
+      "module": "h3-pit",
+      "moduleName": "俯仰轴总成",
+      "file": "h3-pit-02.svg",
+      "note": "连接俯仰电机与相机端的结构臂，决定轴长与刚度。"
+    },
+    {
+      "code": "h3-pit-03",
+      "plate": 7,
+      "title": "IMU-A MODULE",
+      "name": "姿态传感 IMU-A",
+      "module": "h3-pit",
+      "moduleName": "俯仰轴总成",
+      "file": "h3-pit-03.svg",
+      "note": "俯仰轴的姿态检测单元，输出角速度与角度。"
+    },
+    {
+      "code": "h3-pit-04",
+      "plate": 8,
+      "title": "MINI BEARING",
+      "name": "微型轴承",
+      "module": "h3-pit",
+      "moduleName": "俯仰轴总成",
+      "file": "h3-pit-04.svg",
+      "note": "俯仰轴支承轴承，影响回差与顺滑度。"
+    },
+    {
+      "code": "h3-rol-01",
+      "plate": 9,
+      "title": "ROLL MOTOR",
+      "name": "横滚无刷电机",
+      "module": "h3-rol",
+      "moduleName": "横滚轴总成",
+      "file": "h3-rol-01.svg",
+      "note": "驱动横滚轴的无刷电机。"
+    },
+    {
+      "code": "h3-rol-02",
+      "plate": 10,
+      "title": "ROLL ARM",
+      "name": "横滚轴臂",
+      "module": "h3-rol",
+      "moduleName": "横滚轴总成",
+      "file": "h3-rol-02.svg",
+      "note": "横滚轴与俯仰轴之间的连接臂。"
+    },
+    {
+      "code": "h3-rol-03",
+      "plate": 11,
+      "title": "SLIP RING",
+      "name": "滑环线束",
+      "module": "h3-rol",
+      "moduleName": "横滚轴总成",
+      "file": "h3-rol-03.svg",
+      "note": "跨轴旋转导电的滑环与线束，保证连续 360° 供电与信号。"
+    },
+    {
+      "code": "h3-rol-04",
+      "plate": 12,
+      "title": "LIMIT STOP",
+      "name": "机械限位件",
+      "module": "h3-rol",
+      "moduleName": "横滚轴总成",
+      "file": "h3-rol-04.svg",
+      "note": "限制横滚轴行程的机械挡块，防止线束过扭。"
+    },
+    {
+      "code": "h3-yaw-01",
+      "plate": 13,
+      "title": "PAN MOTOR",
+      "name": "航向无刷电机",
+      "module": "h3-yaw",
+      "moduleName": "航向轴总成",
+      "file": "h3-yaw-01.svg",
+      "note": "驱动航向轴的无刷电机。"
+    },
+    {
+      "code": "h3-yaw-02",
+      "plate": 14,
+      "title": "PAN ARM",
+      "name": "航向轴臂",
+      "module": "h3-yaw",
+      "moduleName": "航向轴总成",
+      "file": "h3-yaw-02.svg",
+      "note": "航向轴与手柄之间的连接臂。"
+    },
+    {
+      "code": "h3-yaw-03",
+      "plate": 15,
+      "title": "MAGNETIC ENCODER",
+      "name": "磁性编码器",
+      "module": "h3-yaw",
+      "moduleName": "航向轴总成",
+      "file": "h3-yaw-03.svg",
+      "note": "航向角的高精度磁编码反馈元件。"
+    },
+    {
+      "code": "h3-yaw-04",
+      "plate": 16,
+      "title": "SCREW SET",
+      "name": "锁紧螺钉组",
+      "module": "h3-yaw",
+      "moduleName": "航向轴总成",
+      "file": "h3-yaw-04.svg",
+      "note": "轴系与结构件的锁紧螺钉组合，含防松处理。"
+    },
+    {
+      "code": "h3-hnd-01",
+      "plate": 17,
+      "title": "FRONT SHELL",
+      "name": "手柄前壳",
+      "module": "h3-hnd",
+      "moduleName": "手柄与人机",
+      "file": "h3-hnd-01.svg",
+      "note": "手柄正面外壳，承载按键与屏幕开孔。"
+    },
+    {
+      "code": "h3-hnd-02",
+      "plate": 18,
+      "title": "REAR SHELL",
+      "name": "手柄后壳",
+      "module": "h3-hnd",
+      "moduleName": "手柄与人机",
+      "file": "h3-hnd-02.svg",
+      "note": "手柄背面外壳，与前后壳合模形成握持腔体。"
+    },
+    {
+      "code": "h3-hnd-03",
+      "plate": 19,
+      "title": "GRIP SLEEVE",
+      "name": "握持胶套",
+      "module": "h3-hnd",
+      "moduleName": "手柄与人机",
+      "file": "h3-hnd-03.svg",
+      "note": "包覆手柄的防滑软胶件，改善握持与跌落缓冲。"
+    },
+    {
+      "code": "h3-hnd-04",
+      "plate": 20,
+      "title": "QUICK PLATE",
+      "name": "快装底座",
+      "module": "h3-hnd",
+      "moduleName": "手柄与人机",
+      "file": "h3-hnd-04.svg",
+      "note": "手柄底部的快装接口，兼容三脚架与快装板。"
+    },
+    {
+      "code": "h3-ctl-01",
+      "plate": 21,
+      "title": "MAIN CONTROL PCB",
+      "name": "主控板",
+      "module": "h3-ctl",
+      "moduleName": "控制电子",
+      "file": "h3-ctl-01.svg",
+      "note": "整机主控 PCBA，运行增稳算法与系统调度。"
+    },
+    {
+      "code": "h3-ctl-02",
+      "plate": 22,
+      "title": "3-AXIS DRIVER",
+      "name": "三轴驱动板",
+      "module": "h3-ctl",
+      "moduleName": "控制电子",
+      "file": "h3-ctl-02.svg",
+      "note": "三路电机驱动与电流采样电路板。"
+    },
+    {
+      "code": "h3-ctl-03",
+      "plate": 23,
+      "title": "JOYSTICK & KEYS",
+      "name": "摇杆与按键",
+      "module": "h3-ctl",
+      "moduleName": "控制电子",
+      "file": "h3-ctl-03.svg",
+      "note": "摇杆、按键与相应的人机交互器件组合。"
+    },
+    {
+      "code": "h3-ctl-04",
+      "plate": 24,
+      "title": "BLE MODULE",
+      "name": "蓝牙模块",
+      "module": "h3-ctl",
+      "moduleName": "控制电子",
+      "file": "h3-ctl-04.svg",
+      "note": "与手机 App 通信的蓝牙模组。"
+    },
+    {
+      "code": "h3-pwr-01",
+      "plate": 25,
+      "title": "LITHIUM PACK",
+      "name": "锂电池组",
+      "module": "h3-pwr",
+      "moduleName": "电源与线束",
+      "file": "h3-pwr-01.svg",
+      "note": "整机供电电池组，含电芯与保护板。"
+    },
+    {
+      "code": "h3-pwr-02",
+      "plate": 26,
+      "title": "POWER MANAGEMENT",
+      "name": "电源管理板",
+      "module": "h3-pwr",
+      "moduleName": "电源与线束",
+      "file": "h3-pwr-02.svg",
+      "note": "充放电管理、电量计与多路稳压的 PCBA。"
+    },
+    {
+      "code": "h3-pwr-03",
+      "plate": 27,
+      "title": "USB-C RECEPTACLE",
+      "name": "USB-C 接口",
+      "module": "h3-pwr",
+      "moduleName": "电源与线束",
+      "file": "h3-pwr-03.svg",
+      "note": "充电与数据传输的 USB-C 连接器及外围。"
+    },
+    {
+      "code": "h3-pwr-04",
+      "plate": 28,
+      "title": "WIRE HARNESS",
+      "name": "内部线束",
+      "module": "h3-pwr",
+      "moduleName": "电源与线束",
+      "file": "h3-pwr-04.svg",
+      "note": "连接各板卡与电机的内部线缆组合。"
+    }
+  ]
+}
