@@ -1,0 +1,617 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>市场零件 · 后端检查</title>
+<style>
+  :root {
+    color-scheme: dark;
+    --bg: #060a0f; --panel: #0b131b; --line: #1d2b38;
+    --text: #e8f1f4; --muted: #8ba0ad; --accent: #6ee7d0; --amber: #f2b880; --danger: #ff8a8a;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; min-height: 100vh;
+    background: radial-gradient(1200px 600px at 20% -10%, #0d1b22, var(--bg));
+    color: var(--text); font: 14px/1.6 "Segoe UI", "Microsoft YaHei", system-ui, sans-serif;
+  }
+  header { display: flex; align-items: center; gap: 14px; padding: 16px 24px; border-bottom: 1px solid var(--line); }
+  header h1 { font-size: 16px; margin: 0; letter-spacing: .04em; }
+  nav { display: flex; gap: 6px; margin-left: auto; flex-wrap: wrap; }
+  nav a { color: var(--muted); text-decoration: none; border: 1px solid var(--line); border-radius: 8px; padding: 6px 12px; font-size: 12.5px; }
+  nav a.active, nav a:hover { color: var(--accent); border-color: rgba(110,231,208,.45); }
+  main { max-width: 1240px; margin: 0 auto; padding: 18px 24px 60px; }
+  .toolbar { display: flex; gap: 10px; align-items: center; margin-bottom: 14px; }
+  .toolbar input {
+    flex: 1; min-width: 0; background: #0a1219; color: var(--text);
+    border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; font: inherit;
+  }
+  button {
+    background: #0e1a22; color: var(--text); border: 1px solid var(--line);
+    border-radius: 8px; padding: 8px 14px; font: inherit; cursor: pointer;
+  }
+  button:disabled { opacity: .45; cursor: default; }
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin-bottom: 16px; }
+  .card { border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; background: var(--panel); }
+  .card span { display: block; color: var(--muted); font-size: 12px; }
+  .card b { font-size: 14px; font-weight: 600; overflow-wrap: anywhere; }
+  .panel { border: 1px solid var(--line); border-radius: 14px; background: linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.008)); padding: 14px 16px; margin-bottom: 14px; }
+  .panel h2 { font-size: 14px; margin: 0 0 10px; }
+  .addresses { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 8px 18px; }
+  .addresses a { color: var(--accent); text-decoration: none; font-size: 12.5px; overflow-wrap: anywhere; }
+  .addresses span { color: var(--muted); font-size: 12px; margin-right: 8px; }
+  .tabs { display: flex; gap: 6px; margin: 10px 0 12px; flex-wrap: wrap; }
+  .tabs button.active { color: var(--accent); border-color: rgba(110,231,208,.5); }
+  .log {
+    font-family: ui-monospace, Consolas, monospace; font-size: 12px; line-height: 1.55;
+    background: #070d12; border: 1px solid var(--line); border-radius: 10px;
+    padding: 10px 12px; height: 380px; overflow: auto; white-space: pre-wrap;
+  }
+  .log .t { color: #5f7480; }
+  .log .warn { color: var(--amber); }
+  .log .error { color: var(--danger); }
+  table { width: 100%; border-collapse: collapse; font-size: 12.5px; }
+  th, td { text-align: left; padding: 7px 8px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { color: var(--muted); font-weight: 500; font-size: 11.5px; text-transform: uppercase; letter-spacing: .06em; }
+  tr.run { cursor: pointer; }
+  tr.run:hover td { background: rgba(255,255,255,.03); }
+  .pill { font-size: 11px; border: 1px solid var(--line); border-radius: 999px; padding: 1px 8px; color: var(--muted); }
+  pre { margin: 0; font-family: ui-monospace, Consolas, monospace; font-size: 11.5px; white-space: pre-wrap; color: var(--muted); }
+  .muted { color: var(--muted); }
+  .err { color: var(--danger); }
+  .empty { color: var(--muted); padding: 24px 0; text-align: center; }
+  .detail { margin-top: 12px; border-top: 1px solid var(--line); padding-top: 12px; display: none; }
+  .detail.open { display: block; }
+  .detail h3 { font-size: 13px; margin: 14px 0 6px; color: var(--accent); }
+</style>
+</head>
+<body>
+<header>
+  <h1>ATLAS 市场零件 · 后端检查</h1>
+  <nav>
+    <a href="#" data-nav="review">后端审核</a>
+    <a href="#" data-nav="run">手动抓取</a>
+    <a href="#" data-nav="inspect" class="active">后端检查</a>
+  </nav>
+</header>
+<main>
+  <div class="toolbar">
+    <input id="token" type="password" placeholder="访问 token（atlas/backend/data/token.txt）" />
+    <button id="save">保存 token</button>
+  </div>
+
+  <div class="cards">
+    <div class="card"><span>服务</span><b id="service">—</b></div>
+    <div class="card"><span>平台 / AI</span><b id="platform">—</b></div>
+    <div class="card"><span>定时任务</span><b id="schedule">—</b></div>
+    <div class="card"><span>待审核</span><b id="pending">—</b></div>
+    <div class="card"><span>最近一次</span><b id="last">—</b></div>
+  </div>
+
+  <section class="panel">
+    <h2>地址规范</h2>
+    <div class="addresses" id="addresses"></div>
+  </section>
+
+  <section class="panel">
+    <div class="tabs">
+      <button data-tab="logs" class="active">启动 / 运行日志</button>
+      <button data-tab="runs">运行记录</button>
+      <button data-tab="temp">临时表</button>
+      <button data-tab="review">审核队列</button>
+    </div>
+
+    <div id="tab-logs">
+      <div style="display:flex;gap:10px;align-items:center;margin-bottom:8px">
+        <label class="muted"><input id="follow" type="checkbox" checked /> 自动刷新</label>
+        <span class="muted" id="logmeta">—</span>
+        <button id="refresh-log" style="margin-left:auto">刷新</button>
+      </div>
+      <div class="log" id="log"></div>
+    </div>
+
+    <div id="tab-runs" hidden>
+      <div id="runs"><p class="empty">正在读取运行记录…</p></div>
+      <div class="detail" id="run-detail">
+        <div style="display:flex;align-items:center;gap:10px">
+          <h3 id="detail-title" style="margin:0">运行详情</h3>
+          <button id="close-detail" style="margin-left:auto">收起</button>
+        </div>
+        <h3>meta.json</h3>
+        <pre id="detail-meta"></pre>
+        <h3>decisions.json</h3>
+        <div id="detail-decisions"></div>
+        <h3>functions.jsonl（最近 50 条）</h3>
+        <div id="detail-functions"></div>
+      </div>
+    </div>
+
+    <div id="tab-review" hidden>
+      <div id="review-box"><p class="empty">正在读取审核队列…</p></div>
+    </div>
+
+    <div id="tab-temp" hidden>
+      <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:10px">
+        <span class="muted" id="temp-meta">—</span>
+        <select id="temp-run" style="background:#0a1219;color:var(--text);border:1px solid var(--line);border-radius:8px;padding:6px 10px">
+          <option value="latest">最近一次</option>
+        </select>
+        <select id="temp-status" style="background:#0a1219;color:var(--text);border:1px solid var(--line);border-radius:8px;padding:6px 10px">
+          <option value="">全部状态</option>
+          <option value="kept">保留（kept）</option>
+          <option value="outlier">异常价剔除（outlier）</option>
+          <option value="type_rejected">类型不符（type_rejected）</option>
+        </select>
+        <input id="temp-type" placeholder="按类型 code 过滤，如 h3-cam-01" style="background:#0a1219;color:var(--text);border:1px solid var(--line);border-radius:8px;padding:6px 10px;min-width:220px" />
+        <button id="temp-refresh" style="margin-left:auto">刷新</button>
+      </div>
+      <div id="temp-box"><p class="empty">正在读取临时表…</p></div>
+    </div>
+  </section>
+</main>
+<script>
+(() => {
+  const params = new URLSearchParams(location.search);
+  function sanitizeToken(value) {
+    const token = String(value || "").trim();
+    return /^[A-Za-z0-9_-]{8,128}$/.test(token) ? token : "";
+  }
+  const rawToken = params.get("token") || sessionStorage.getItem("market.token") || "";
+  const state = {
+    token: sanitizeToken(rawToken),
+    rawToken,
+    logs: [],
+    latestId: 0,
+    follow: true,
+    detailRun: null,
+  };
+  const $ = (id) => document.getElementById(id);
+
+  function withToken(path) {
+    const url = new URL(path, location.origin);
+    if (state.token) url.searchParams.set("token", state.token);
+    return url.toString();
+  }
+  function headers() {
+    return state.token
+      ? { "Content-Type": "application/json", "x-market-token": state.token }
+      : { "Content-Type": "application/json" };
+  }
+  async function api(path) {
+    if (!state.token) {
+      throw new Error("token 为空或格式不对：请从 atlas/backend/data/token.txt 复制 32 位 token，再点“保存 token”。");
+    }
+    const response = await fetch(path, { headers: headers() });
+    const data = await response.json().catch(() => ({}));
+    if (!response.ok) throw new Error(data.error || `HTTP ${response.status}`);
+    return data;
+  }
+
+  function updateNav() {
+    for (const link of document.querySelectorAll("[data-nav]")) {
+      link.href = withToken(`/${link.dataset.nav}`);
+    }
+  }
+
+  async function loadStatus() {
+    const status = await api("/api/status");
+    $("service").textContent = `v${status.version} · 运行 ${Math.floor(status.uptimeSec / 60)} 分钟`;
+    $("platform").textContent = `${status.platformTag} · ${status.ai.mode === "mock" ? "模拟 AI" : status.ai.model}`;
+    $("schedule").textContent = status.schedule.enabled
+      ? `每天 ${status.schedule.dailyAt}（${status.schedule.timeZone}）`
+      : "未启用";
+    $("pending").textContent = `待审 ${status.pendingReviews}`;
+    $("last").textContent = status.lastRunStatus
+      ? `${status.lastRunStatus}${status.lastRun ? ` · ${status.lastRun.runId.slice(-6)}` : ""}`
+      : "还没有运行记录";
+
+    const urls = status.urls;
+    const box = $("addresses");
+    box.replaceChildren();
+    const rows = [
+      ["第一页", urls.page1, urls.page1],
+      ["第二页", urls.page2, urls.page2],
+      ["后端审核", urls.review, urls.review],
+      ["手动抓取", urls.run, urls.run],
+      ["后端检查", urls.inspect, urls.inspect],
+    ];
+    for (const [label, href] of rows) {
+      const wrap = document.createElement("div");
+      const tag = document.createElement("span");
+      tag.textContent = label;
+      const target = new URL(href);
+      if (target.origin === location.origin) target.searchParams.set("token", state.token);
+      const a = document.createElement("a");
+      a.href = target.toString();
+      a.textContent = href;
+      a.target = "_blank";
+      a.rel = "noreferrer";
+      wrap.append(tag, a);
+      box.append(wrap);
+    }
+    return status;
+  }
+
+  async function loadLogs(reset = false) {
+    const query = reset ? "?limit=400" : `?limit=400&since=${state.latestId}`;
+    const data = await api(`/api/logs${query}`);
+    if (reset) state.logs = [];
+    state.logs.push(...data.entries);
+    state.latestId = Math.max(state.latestId, data.latestId || 0);
+    if (state.logs.length > 800) state.logs = state.logs.slice(-800);
+    renderLogs();
+    $("logmeta").textContent = `${state.logs.length} 条 · 进程启动 ${new Date(data.startedAt).toLocaleString()}`;
+  }
+
+  function renderLogs() {
+    const box = $("log");
+    box.replaceChildren();
+    for (const entry of state.logs) {
+      const line = document.createElement("div");
+      const time = document.createElement("span");
+      time.className = "t";
+      time.textContent = `${new Date(entry.at).toLocaleTimeString("zh-CN", { hour12: false })} `;
+      const text = document.createElement("span");
+      text.className = entry.level === "error" ? "error" : entry.level === "warn" ? "warn" : "";
+      text.textContent = entry.message;
+      line.append(time, text);
+      box.append(line);
+    }
+    box.scrollTop = box.scrollHeight;
+  }
+
+  async function loadRuns() {
+    const data = await api("/api/runs");
+    const box = $("runs");
+    box.replaceChildren();
+    if (!data.runs.length) {
+      box.innerHTML = '<p class="empty">还没有运行记录。</p>';
+      return;
+    }
+    const table = document.createElement("table");
+    table.innerHTML = "<thead><tr><th>开始</th><th>runId</th><th>触发</th><th>类型</th><th>新建</th><th>更新</th><th>审核</th><th>用时</th><th>写回</th></tr></thead>";
+    const tbody = document.createElement("tbody");
+    for (const run of data.runs) {
+      const tr = document.createElement("tr");
+      tr.className = "run";
+      const cells = [
+        new Date(run.startedAt).toLocaleString(),
+        run.runId,
+        run.trigger,
+        String(run.partTypes),
+        String(run.totals.created),
+        String(run.totals.updated),
+        String(run.totals.reviewed),
+        `${run.durationMs}ms`,
+        run.write.enabled ? "是" : "dry-run",
+      ];
+      for (const value of cells) {
+        const td = document.createElement("td");
+        td.textContent = value;
+        tr.append(td);
+      }
+      tr.addEventListener("click", () => showRun(run.runId));
+      tbody.append(tr);
+    }
+    table.append(tbody);
+    box.append(table);
+  }
+
+  async function showRun(runId) {
+    state.detailRun = runId;
+    const detail = $("run-detail");
+    detail.classList.add("open");
+    $("detail-title").textContent = `运行详情 · ${runId}`;
+    $("detail-meta").textContent = "读取中…";
+    $("detail-decisions").textContent = "";
+    $("detail-functions").textContent = "";
+    try {
+      const meta = await api(`/api/runs/${encodeURIComponent(runId)}`);
+      $("detail-meta").textContent = JSON.stringify(meta.data, null, 2);
+      const decisions = await api(`/api/runs/${encodeURIComponent(runId)}/decisions`).catch(() => null);
+      renderDecisions(decisions?.data || []);
+      const functions = await api(`/api/runs/${encodeURIComponent(runId)}/functions?limit=50`).catch(() => null);
+      renderFunctions(functions?.entries || []);
+    } catch (error) {
+      $("detail-meta").textContent = error.message;
+    }
+    detail.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+
+  function renderDecisions(rows) {
+    const box = $("detail-decisions");
+    box.replaceChildren();
+    if (!rows.length) {
+      box.innerHTML = '<p class="muted">没有决策记录。</p>';
+      return;
+    }
+    const table = document.createElement("table");
+    table.innerHTML = "<thead><tr><th>类型</th><th>厂家</th><th>型号</th><th>中位价</th><th>条目</th><th>动作</th><th>说明</th></tr></thead>";
+    const tbody = document.createElement("tbody");
+    for (const row of rows) {
+      const tr = document.createElement("tr");
+      for (const value of [
+        row.partTypeCode,
+        row.manufacturer,
+        row.model,
+        `¥${row.medianPrice}`,
+        row.listings,
+        row.action,
+        row.reason,
+      ]) {
+        const td = document.createElement("td");
+        td.textContent = value ?? "";
+        tr.append(td);
+      }
+      tbody.append(tr);
+    }
+    table.append(tbody);
+    box.append(table);
+  }
+
+  function renderFunctions(entries) {
+    const box = $("detail-functions");
+    box.replaceChildren();
+    if (!entries.length) {
+      box.innerHTML = '<p class="muted">没有函数调用记录。</p>';
+      return;
+    }
+    const pre = document.createElement("pre");
+    pre.textContent = entries
+      .map((entry) => `${entry.at?.slice(11, 19) || ""} ${entry.name} ${JSON.stringify(entry.result)}`)
+      .join("\n");
+    box.append(pre);
+  }
+
+  async function loadReview() {
+    const data = await api("/api/review");
+    const box = $("review-box");
+    const counts = data.counts || {};
+    const pending = (data.items || []).filter((item) => item.status === "pending");
+    const decided = (data.items || [])
+      .filter((item) => item.status === "approved" || item.status === "rejected")
+      .sort((a, b) => String(b.decidedAt).localeCompare(String(a.decidedAt)));
+    box.innerHTML = "";
+    const summary = document.createElement("p");
+    summary.className = "muted";
+    summary.textContent = `待审 ${counts.pending || pending.length} · 已通过 ${counts.approved || 0} · 已驳回 ${counts.rejected || 0}`;
+    box.append(summary);
+
+    if (pending.length) {
+      const list = document.createElement("table");
+      list.innerHTML =
+        "<thead><tr><th>类型</th><th>厂家 / 型号</th><th>中位价</th><th>当前 true 链接</th><th>原因</th></tr></thead>";
+      const tbody = document.createElement("tbody");
+      for (const item of pending) {
+        const tr = document.createElement("tr");
+        for (const value of [
+          item.partTypeName,
+          `${item.group?.manufacturer || "?"} / ${item.group?.model || "?"}`,
+          `¥${item.group?.medianPrice ?? "?"}`,
+        ]) {
+          const td = document.createElement("td");
+          td.textContent = value;
+          tr.append(td);
+        }
+        const linkCell = document.createElement("td");
+        const primary = (item.currentLinks || []).find((link) => link.primary);
+        if (primary) {
+          const a = document.createElement("a");
+          a.href = primary.url;
+          a.target = "_blank";
+          a.rel = "noreferrer";
+          a.style.color = "var(--accent)";
+          a.textContent = "true · 打开主链接";
+          linkCell.append(a);
+          const falseCount = (item.currentLinks || []).filter((link) => !link.primary).length;
+          const sub = document.createElement("div");
+          sub.className = "muted";
+          sub.style.fontSize = "11px";
+          sub.textContent = `另有 false ${falseCount} 条`;
+          linkCell.append(sub);
+        } else {
+          linkCell.textContent = "—";
+        }
+        tr.append(linkCell);
+        const reason = document.createElement("td");
+        reason.textContent = item.reason || "";
+        tr.append(reason);
+        tbody.append(tr);
+      }
+      list.append(tbody);
+      box.append(list);
+    } else {
+      const none = document.createElement("p");
+      none.className = "empty";
+      none.textContent = "没有待审核的商品。";
+      box.append(none);
+    }
+
+    const title = document.createElement("p");
+    title.className = "muted";
+    title.style.marginTop = "16px";
+    title.textContent = `既往审核记录（最近 ${Math.min(decided.length, 20)} / ${decided.length} 条）`;
+    box.append(title);
+    if (decided.length === 0) {
+      const none = document.createElement("p");
+      none.className = "muted";
+      none.textContent = "还没有通过或驳回的记录。";
+      box.append(none);
+    } else {
+      const hist = document.createElement("table");
+      hist.innerHTML =
+        "<thead><tr><th>决定时间</th><th>结果</th><th>类型</th><th>厂家 / 型号</th><th>写入价格</th><th>说明</th></tr></thead>";
+      const tbody = document.createElement("tbody");
+      for (const item of decided.slice(0, 20)) {
+        const tr = document.createElement("tr");
+        const cells = [
+          item.decidedAt ? new Date(item.decidedAt).toLocaleString("zh-CN", { hour12: false }) : "—",
+          item.status === "approved" ? "通过" : "驳回",
+          item.partTypeName || item.partTypeCode,
+          `${item.group?.manufacturer || "?"} / ${item.group?.model || "?"}`,
+          item.status === "approved" ? `¥${Number(item.decidedPrice || 0).toFixed(2)}` : "未写入",
+          [item.reason, item.note ? `备注：${item.note}` : ""].filter(Boolean).join(" · "),
+        ];
+        for (const value of cells) {
+          const td = document.createElement("td");
+          td.textContent = value;
+          tr.append(td);
+        }
+        const result = tr.children[1];
+        result.style.color = item.status === "approved" ? "var(--accent)" : "var(--danger)";
+        tbody.append(tr);
+      }
+      hist.append(tbody);
+      box.append(hist);
+    }
+
+    const link = document.createElement("p");
+    link.innerHTML = `<a href="${withToken("/review")}" target="_blank" rel="noreferrer" style="color:var(--accent)">打开审核页处理 →</a>`;
+    box.append(link);
+  }
+
+  async function loadTempRuns() {
+    const data = await api("/api/runs");
+    const select = $("temp-run");
+    const current = select.value;
+    select.replaceChildren();
+    const latest = document.createElement("option");
+    latest.value = "latest";
+    latest.textContent = "最近一次";
+    select.append(latest);
+    for (const run of data.runs.slice(0, 30)) {
+      const option = document.createElement("option");
+      option.value = run.runId;
+      option.textContent = `${run.runId} · ${run.partTypes} 类 · 新建 ${run.totals.created} / 更新 ${run.totals.updated}`;
+      select.append(option);
+    }
+    select.value = [...select.options].some((option) => option.value === current) ? current : "latest";
+  }
+
+  async function loadTemp() {
+    const query = new URLSearchParams({ limit: "500" });
+    const status = $("temp-status").value;
+    const type = $("temp-type").value.trim();
+    const runId = $("temp-run").value;
+    if (status) query.set("status", status);
+    if (type) query.set("partTypeCode", type);
+    if (runId && runId !== "latest") query.set("runId", runId);
+    const data = await api(`/api/temp?${query.toString()}`);
+    const counts = data.counts || {};
+    $("temp-meta").textContent = data.runId
+      ? `${data.runId} · 共 ${data.total} 条 · 保留 ${counts.kept || 0} · 异常剔除 ${counts.outlier || 0} · 类型不符 ${counts.type_rejected || 0} · 显示 ${data.rows.length} 条`
+      : "还没有临时表，先跑一次抓取。";
+    const box = $("temp-box");
+    box.replaceChildren();
+    if (!data.rows.length) {
+      box.innerHTML = '<p class="empty">没有匹配的记录。</p>';
+      return;
+    }
+    const labels = { kept: "保留", outlier: "异常剔除", type_rejected: "类型不符", accepted: "已抽取" };
+    const table = document.createElement("table");
+    table.innerHTML =
+      "<thead><tr><th>状态</th><th>类型</th><th>厂家 / 型号</th><th>价格</th><th>月销</th><th>中位价</th><th>说明 / 链接</th></tr></thead>";
+    const tbody = document.createElement("tbody");
+    for (const row of data.rows) {
+      const tr = document.createElement("tr");
+      const statusCell = document.createElement("td");
+      const pill = document.createElement("span");
+      pill.className = "pill";
+      pill.textContent = labels[row.status] || row.status || "?";
+      if (row.status === "outlier") pill.style.color = "var(--amber)";
+      if (row.status === "type_rejected") pill.style.color = "var(--danger)";
+      statusCell.append(pill);
+      tr.append(statusCell);
+      for (const value of [
+        `${row.partTypeCode || ""}\n${row.partTypeName || ""}`,
+        `${row.manufacturer || "?"}\n${row.model || ""}`,
+        `¥${Number(row.price || 0).toFixed(2)}`,
+        String(row.monthlySales ?? ""),
+        row.groupMedian ? `¥${Number(row.groupMedian).toFixed(2)}` : "—",
+      ]) {
+        const td = document.createElement("td");
+        td.textContent = value;
+        td.style.whiteSpace = "pre-line";
+        tr.append(td);
+      }
+      const last = document.createElement("td");
+      if (row.reason) {
+        const reason = document.createElement("div");
+        reason.className = "muted";
+        reason.textContent = row.reason;
+        last.append(reason);
+      }
+      const link = document.createElement("a");
+      link.href = row.url || "#";
+      link.target = "_blank";
+      link.rel = "noreferrer";
+      link.textContent = row.title || row.url || "";
+      link.style.color = "var(--accent)";
+      link.style.fontSize = "12px";
+      last.append(link);
+      tr.append(last);
+      tbody.append(tr);
+    }
+    table.append(tbody);
+    box.append(table);
+  }
+
+  function switchTab(name) {
+    for (const button of document.querySelectorAll("[data-tab]")) {
+      button.classList.toggle("active", button.dataset.tab === name);
+    }
+    $("tab-logs").hidden = name !== "logs";
+    $("tab-runs").hidden = name !== "runs";
+    $("tab-temp").hidden = name !== "temp";
+    $("tab-review").hidden = name !== "review";
+    if (name === "runs") loadRuns().catch((error) => { $("runs").innerHTML = `<p class="err">${error.message}</p>`; });
+    if (name === "temp") {
+      loadTempRuns()
+        .then(() => loadTemp())
+        .catch((error) => { $("temp-box").innerHTML = `<p class="err">${error.message}</p>`; });
+    }
+    if (name === "review") loadReview().catch((error) => { $("review-box").innerHTML = `<p class="err">${error.message}</p>`; });
+  }
+
+  for (const button of document.querySelectorAll("[data-tab]")) {
+    button.addEventListener("click", () => switchTab(button.dataset.tab));
+  }
+  $("temp-status").addEventListener("change", () => loadTemp().catch(() => {}));
+  $("temp-run").addEventListener("change", () => loadTemp().catch(() => {}));
+  $("temp-refresh").addEventListener("click", () => loadTemp().catch(() => {}));
+  $("temp-type").addEventListener("keydown", (event) => {
+    if (event.key === "Enter") loadTemp().catch(() => {});
+  });
+  $("follow").addEventListener("change", () => { state.follow = $("follow").checked; });
+  $("refresh-log").addEventListener("click", () => loadLogs(true).catch(() => {}));
+  $("close-detail").addEventListener("click", () => $("run-detail").classList.remove("open"));
+  $("save").addEventListener("click", () => {
+    const value = $("token").value.trim();
+    state.token = sanitizeToken(value);
+    if (!state.token) {
+      $("log").textContent =
+        "token 格式不对：应为 32 位十六进制（见 atlas/backend/data/token.txt），不要复制地址里的“…”。";
+      return;
+    }
+    sessionStorage.setItem("market.token", state.token);
+    updateNav();
+    loadStatus().catch(() => {});
+    loadLogs(true).catch(() => {});
+  });
+
+  $("token").value = state.token || state.rawToken;
+  if (state.rawToken && !state.token) {
+    $("log").textContent =
+      "地址里的 token 无效（常见原因：复制了文档里的“…”，或不是 32 位十六进制）。请从 atlas/backend/data/token.txt 复制后点“保存 token”。";
+  }
+  updateNav();
+  loadStatus().catch(() => {});
+  loadLogs(true).catch((error) => { $("log").textContent = error.message; });
+  setInterval(() => {
+    if (state.follow && !$("tab-logs").hidden) loadLogs(false).catch(() => {});
+  }, 2500);
+})();
+</script>
+</body>
+</html>
