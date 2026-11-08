@@ -1,5 +1,5 @@
 @echo off
-title ATLAS ÐèÇó¹æ·¶»¯
+title ATLAS ï¿½ï¿½ï¿½ï¿½æ·¶ï¿½ï¿½
 cd /d "%~dp0"
 
 where node >nul 2>nul
@@ -8,23 +8,23 @@ if errorlevel 1 goto nonode
 if not exist "data" mkdir "data"
 
 echo.
-echo   ATLAS ÐèÇó¹æ·¶»¯
-echo   µØÖ·: http://127.0.0.1:43125
-echo   ¹Ø±Õ±¾´°¿Ú¼´Í£Ö¹·þÎñ
+echo   ATLAS ï¿½ï¿½ï¿½ï¿½æ·¶ï¿½ï¿½
+echo   ï¿½ï¿½Ö·: http://127.0.0.1:43125
+echo   ï¿½Ø±Õ±ï¿½ï¿½ï¿½ï¿½Ú¼ï¿½Í£Ö¹ï¿½ï¿½ï¿½ï¿½
 echo.
 start "" http://127.0.0.1:43125
 node server.mjs
 echo.
-echo   ·þÎñÒÑÍ£Ö¹
+echo   ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£Ö¹
 echo.
 pause
 exit /b 0
 
 :nonode
 echo.
-echo   [X] Ã»ÓÐ¼ì²âµ½ Node.js
-echo       ÇëÏÈ°²×° LTS °æ±¾: https://nodejs.org/
-echo       ×°ÍêÔÙË«»÷±¾ÎÄ¼þ
+echo   [X] Ã»ï¿½Ð¼ï¿½âµ½ Node.js
+echo       ï¿½ï¿½ï¿½È°ï¿½×° LTS ï¿½æ±¾: https://nodejs.org/
+echo       ×°ï¿½ï¿½ï¿½ï¿½Ë«ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½
 echo.
 pause
 exit /b 1

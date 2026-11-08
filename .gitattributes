@@ -1,0 +1,5 @@
+# Windows 批处理必须原样保存 CRLF：
+# cmd.exe 解析 LF-only 的 UTF-8 批处理时会错位，表现为中文乱码 + 半行被当成命令执行。
+# -text 表示不做换行转换，仓库和 GitHub 下载的 zip 里都是 CRLF。
+*.cmd -text
+*.bat -text
